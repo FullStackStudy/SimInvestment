@@ -9,6 +9,6 @@ public class MemberController {
     @GetMapping("/login")
     public String login()
     {
-        return "login.html";
+        return "login";
     }
 }

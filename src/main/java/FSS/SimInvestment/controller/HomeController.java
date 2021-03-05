@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class HomeController {
 
-    @GetMapping("/")
-    public String home()
-    {
-        log.info("in GetMapping -> /");
-        return "index.html";
-    }
+//    @GetMapping("/")
+//    public String home()
+//    {
+//        log.info("in GetMapping -> /");
+//        return "index";
+//    }
+
 }
