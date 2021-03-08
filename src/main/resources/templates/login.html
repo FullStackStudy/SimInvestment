@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <title>Login Page</title>
   </head>
   <body>
     <h1>Login Page</h1>
-    <fieldset class="login_form">
-      <legend>Login</legend>
-      <div class="id_area">
-        <label for="id">ID</label>
-        <input type="text" name="id" id="id" />
-      </div>
-      <div class="pw_area">
-        <label for="pw">Password</label>
-        <input type="password" name="pw" id="pw" />
-      </div>
-    </fieldset>
+    <form
+      class="login_form"
+      id="login_form"
+      action="#"
+      th:action="@{/login}"
+      th:object="${user}"
+      method="POST"
+    >
+      <fieldset class="login_form">
+        <legend>Login</legend>
+        <div class="id_area">
+          <label for="id">ID</label>
+          <input type="text" name="id" id="id" />
+        </div>
+        <div class="pw_area">
+          <label for="pw">Password</label>
+          <input type="password" name="pw" id="pw" />
+        </div>
+      </fieldset>
+      <input type="submit" value="LOGIN" />
+    </form>
   </body>
 </html>
