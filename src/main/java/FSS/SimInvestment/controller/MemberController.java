@@ -21,4 +21,9 @@ public class MemberController {
         model.addAttribute("user", user);
         return "result";
     }
+  
+    public String clickedLoginButton()
+    {
+
+    }
 }
