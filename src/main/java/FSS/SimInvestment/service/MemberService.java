@@ -22,16 +22,16 @@ public class MemberService {
         memberRepository.save(member);
     }
 
-    public void login(Member member)
+    public Member login(Member member)
     {
         Optional<Member> findMember = memberRepository.findById(member.getId());
         if(findMember.get().getPassword().equals(member.getPassword()))
         {
-            // 로그인 성공
+            return findMember.get();
         }
         else
         {
-            // 무엇인가 안 맞음
+            return null;
         }
     }
 
