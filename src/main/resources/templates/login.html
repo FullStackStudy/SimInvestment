@@ -11,7 +11,7 @@
       id="login_form"
       action="#"
       th:action="@{/login}"
-      th:object="${user}"
+      th:object="${member}"
       method="POST"
     >
       <fieldset class="login_form">
@@ -21,8 +21,8 @@
           <input type="text" name="id" id="id" />
         </div>
         <div class="pw_area">
-          <label for="pw">Password</label>
-          <input type="password" name="pw" id="pw" />
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
         </div>
       </fieldset>
       <input type="submit" value="LOGIN" />
