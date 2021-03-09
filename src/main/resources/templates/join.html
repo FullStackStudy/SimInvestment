@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Join Us</title>
+  </head>
+  <body>
+    <h1>Join</h1>
+    <form
+      class="join_form"
+      id="join_form"
+      action="#"
+      th:action="@{/join}"
+      th:object="${member}"
+      method="POST"
+    >
+      <fieldset class="join_form">
+        <legend>Join</legend>
+        <div class="id_area">
+          <label for="id">ID</label>
+          <input type="text" name="id" id="id" />
+        </div>
+        <div class="pw_area">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </div>
+        <div class="pw2_area">
+          <label for="pw2">Password Check</label>
+          <input type="text" name="pw2" id="pw2" />
+        </div>
+      </fieldset>
+      <input type="submit" value="JOIN" />
+    </form>
+  </body>
+</html>
