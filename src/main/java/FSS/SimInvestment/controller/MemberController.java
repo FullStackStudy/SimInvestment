@@ -35,7 +35,7 @@ public class MemberController {
             log.error("중복된 아이디 입력됨 !!");
             return "join";
         }
-        return "index.html";
+        return "redirect:/";
     }
 
     @GetMapping("/login")
