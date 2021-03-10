@@ -10,7 +10,7 @@
       class="join_form"
       id="join_form"
       action="#"
-      th:action="@{/}"
+      th:action="@{/join}"
       th:object="${member}"
       method="POST"
     >
@@ -30,7 +30,7 @@
         </div>
       </fieldset>
       <input type="submit" value="JOIN" />
-      <input type="submit" value="HOME" />
+      <input type="button" onclick="location.href='/'" value="HOME" />
     </form>
   </body>
 </html>
