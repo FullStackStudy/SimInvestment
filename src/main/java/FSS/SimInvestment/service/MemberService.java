@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,22 +24,22 @@ public class MemberService {
 
     public Member login(Member member)
     {
-        Optional<Member> findMember = memberRepository.findById(member.getId());
-        if(findMember.get().getPassword().equals(member.getPassword()))
+        List<Member> findMember = memberRepository.findById(member.getId());
+        for (Member m : findMember)
         {
-            return findMember.get();
+            if(member.getPassword().equals(m.getPassword()))
+            {
+                return m;
+            }
         }
-        else
-        {
-            return null;
-        }
+        return null;
     }
 
     public void checkDuplicatedId(String id)
     {
-        Optional<Member> findMember = memberRepository.findById(id);
+        List<Member> findIds = memberRepository.findById(id);
 
-        if(findMember.isPresent())
+        if(!findIds.isEmpty())
         {
             throw new IllegalStateException("이미 존재하는 아이디 입니다.");
         }

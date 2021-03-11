@@ -20,11 +20,19 @@ public class MemberRepository {
         em.persist(member);
     }
 
-    public Optional<Member> findById(String id)
+    public Optional<Member> findByKey(Long key)
     {
-        Member member = em.find(Member.class, id);
+        Member member = em.find(Member.class, key);
 
         return Optional.ofNullable(member);
+    }
+
+
+    public List<Member> findById(String id)
+    {
+        return em.createQuery("select m from Member m where m.id = :id", Member.class)
+                .setParameter("id", id)
+                .getResultList();
     }
 
     public List<Member> findAllMember()
