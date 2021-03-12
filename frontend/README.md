@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# 프론트엔드 설정
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Prettier
+저장 및 자동 정렬시 코드 스타일을 맞춰주는 역할을 한다.
 
-## Available Scripts
+### 1. 저장 설정
+먼저 저장할때 코드스타일이 적용되도록 하기 위해 자동저장을 해제한다.
 
-In the project directory, you can run:
+Settings -> Appearnce & Behavior -> System Settings에 들어가 다음과 같이 설정한다.
+![01 자동저장](https://user-images.githubusercontent.com/44297538/110923011-c4b30680-8363-11eb-8e41-2f54d811c756.jpg)
 
-### `yarn start`
+### 2. IntelliJ Prettier Plugin 설치
+Setting -> Plugins에 가서 Prettier를 검색하고 설치한다. 검색창에 Prettier를 쳐도 나오지 않으면 Search in Marketplace를 누르면 나온다.
+![02 프리티어플러그인](https://user-images.githubusercontent.com/44297538/110923016-c4b30680-8363-11eb-9c63-c38cb1f7b283.JPG)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 3. 패키지 설치
+터미널에서 다음 명령어로 Prettier package를 설치한다. 만약 `yarn`이 설치되어 있다면 `yarn global add prettier`를 입력, 설치되어있지 않다면 `npm install –global prettier`로 설치한다. 아마 써보면 편해서 또 쓸수 있으니까 global로 설치하자.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 4. Prettier 설정
+Setting -> Languages & Frameworks -> JavaScript -> Prettier에 들어가 다음 사진과 같이 설정한다.
+![03 프리티어설정](https://user-images.githubusercontent.com/44297538/110923007-c381d980-8363-11eb-83bd-a6797a4a6a48.jpg)
+Prettier package에서 다음과 같이 지정해준다. 아래에 On code reformat, On save에 체크해주자. 두 옵션을 체크하면 코드 리포맷, 저장 시 자동으로 코드 스타일을 변경해준다.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 5. Prettier 옵션 변경
+필요하다고 생각될때만 하면 된다. 이 옵션을 바꾸면 모두에게 동기화되니 이야기를 하고 바꿀 것. frontend 폴더에 .prettierrc라는 파일이 있다.(지금은 없을텐데 곧 올릴거다) 그 파일을 변경하면 코드 
