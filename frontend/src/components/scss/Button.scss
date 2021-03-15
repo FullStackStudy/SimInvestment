@@ -1,0 +1,83 @@
+@import "Color";
+
+@mixin button-color($color){
+  background: $color;
+  // 마우스가 올라갔을 때
+  &:hover{
+    background: lighten($color, 10%);
+  }
+  // 클릭 되었을 때
+  &:active{
+    background: darken($color, 10%);
+  }
+
+  &.outline{
+    color: $color;
+    background: none;
+    border: 1px solid $color;
+    &:hover{
+      background: $color;
+      color: white;
+    }
+  }
+}
+
+.Button{
+  display: inline-flex;
+  height: 2.25rem;
+
+  outline: none;
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+  font-size: 1rem;
+
+  color: white;
+  &.blue{
+    @include button-color($blue);
+  }
+  &.gray{
+    @include button-color($gray);
+  }
+  &.red{
+    @include button-color($red);
+  }
+  &.green{
+    @include button-color($green);
+  }
+
+  &.large{
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+  &.medium{
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+  &.small{
+    height: 1.75rem;
+    font-size: 0.875rem;
+  }
+
+  & + &{
+    margin-left: 1rem;
+  }
+
+  &.fullWidth{
+    width: 100%;
+    justify-content: center;
+    & + &{
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+}
