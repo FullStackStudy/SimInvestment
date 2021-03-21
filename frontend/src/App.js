@@ -1,4 +1,5 @@
 import Button from './components/Button';
+import Input from './components/Input';
 
 function App() {
     return (
@@ -12,6 +13,11 @@ function App() {
             <Button color="blue" size="small">
                 작은 파란 버튼
             </Button>
+            <form>
+                <Input type="text" placeholder="내용을 입력하세요." size="large" />
+                <Input type="text" placeholder="내용을 입력하세요." size="medium" />
+                <Input type="text" placeholder="내용을 입력하세요." size="small" />
+            </form>
         </>
     );
 }
