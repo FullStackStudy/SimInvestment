@@ -68,6 +68,10 @@
     font-size: 0.875rem;
   }
 
+  &.wide{
+    width: 100%;
+  }
+
   & + &{
     margin-left: 1rem;
   }
