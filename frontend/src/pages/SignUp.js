@@ -40,7 +40,7 @@ function SignUp() {
                 </div>
                 <div className="box">
                     <h4>비밀번호</h4>
-                    <Input type="password" wide value={pw} onChange={onChangePw} pattern={pw} />
+                    <Input type="password" wide value={pw} onChange={onChangePw} />
                 </div>
                 <div className="box">
                     <h4>비밀번호 확인</h4>
