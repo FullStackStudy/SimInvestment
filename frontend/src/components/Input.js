@@ -13,7 +13,7 @@ function Input({ type, placeholder, onChange, size, wide, name }) {
         return className;
     };
 
-    const pattern = type === 'tel' ? '[0-9]{3}-[0-9]{4}-[0-9]{4}' : '';
+    /const pattern = type === 'tel' ? '[0-9]{3}-[0-9]{4}-[0-9]{4}' : '';
 
     return (
         <input
@@ -22,7 +22,6 @@ function Input({ type, placeholder, onChange, size, wide, name }) {
             placeholder={placeholder}
             onChange={onChange}
             name={name}
-            pattern={pattern}
         />
     );
 }
