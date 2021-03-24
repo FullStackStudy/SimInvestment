@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './scss/SignUp.scss';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import axios from 'axios';
 
 function SignUp() {
     const [id, setId] = useState();
@@ -21,7 +22,7 @@ function SignUp() {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        let data = { id, pw, name, tel, email };
+        axios.post('/sign-up', { id, pw, name, tel, email });
     };
 
     return (
