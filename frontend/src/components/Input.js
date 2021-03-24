@@ -22,7 +22,6 @@ function Input({ type, placeholder, onChange, size, wide, name }) {
             placeholder={placeholder}
             onChange={onChange}
             name={name}
-            pattern={pattern}
         />
     );
 }
