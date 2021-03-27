@@ -3,6 +3,7 @@ import './scss/SignUp.scss';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import axios from 'axios';
+import PasswordLayer from '../components/PasswordLayer';
 
 function SignUp() {
     const [id, setId] = useState();
@@ -42,6 +43,7 @@ function SignUp() {
                 <div className="box">
                     <h4>비밀번호</h4>
                     <Input type="password" wide value={pw} onChange={onChangePw} />
+                    <PasswordLayer />
                 </div>
                 <div className="box">
                     <h4>비밀번호 확인</h4>
