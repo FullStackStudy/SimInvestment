@@ -4,6 +4,8 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import axios from 'axios';
 import PasswordLayer from '../components/PasswordLayer';
+import '../Context';
+import Context from '../Context';
 
 function SignUp() {
     const [id, setId] = useState();
@@ -51,12 +53,19 @@ function SignUp() {
                         onChange={onChangePw}
                         onSelect={() => setPwLayerDisplay('true')}
                         onBlur={() => setPwLayerDisplay('false')}
+                        maxLength={Context.Password.MAX_PW_LENGTH}
                     />
-                    <PasswordLayer display={pwLayerDisplay} />
+                    <PasswordLayer display={pwLayerDisplay} password={pw} />
                 </div>
                 <div className="box">
                     <h4>비밀번호 확인</h4>
-                    <Input type="password" wide value={pwConfirm} onChange={onChangePwConfirm} />
+                    <Input
+                        type="password"
+                        wide
+                        value={pwConfirm}
+                        onChange={onChangePwConfirm}
+                        maxLength={Context.Password.MAX_PW_LENGTH}
+                    />
                 </div>
                 <div className="box">
                     <h4>이름</h4>
