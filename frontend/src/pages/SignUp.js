@@ -13,6 +13,8 @@ function SignUp() {
     const [tel, setTel] = useState();
     const [email, setEmail] = useState();
 
+    const [pwLayerDisplay, setPwLayerDisplay] = useState();
+
     const onChangeId = (e) => setId(e.target.value);
     const onChangePw = (e) => setPw(e.target.value);
     const onChangePwConfirm = (e) => setPwConfirm(e.target.value);
@@ -42,8 +44,15 @@ function SignUp() {
                 </div>
                 <div className="box">
                     <h4>비밀번호</h4>
-                    <Input type="password" wide value={pw} onChange={onChangePw} />
-                    <PasswordLayer />
+                    <Input
+                        type="password"
+                        wide
+                        value={pw}
+                        onChange={onChangePw}
+                        onSelect={() => setPwLayerDisplay('true')}
+                        onBlur={() => setPwLayerDisplay('false')}
+                    />
+                    <PasswordLayer display={pwLayerDisplay} />
                 </div>
                 <div className="box">
                     <h4>비밀번호 확인</h4>
