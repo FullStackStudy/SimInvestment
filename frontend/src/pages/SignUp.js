@@ -3,8 +3,7 @@ import './scss/SignUp.scss';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import axios from 'axios';
-import PasswordLayer from '../components/PasswordLayer';
-import '../Context';
+import PasswordValidChecker from '../components/PasswordValidChecker';
 import Context from '../Context';
 
 function SignUp() {
@@ -55,7 +54,7 @@ function SignUp() {
                         onBlur={() => setPwLayerDisplay('false')}
                         maxLength={Context.Password.MAX_PW_LENGTH}
                     />
-                    <PasswordLayer display={pwLayerDisplay} password={pw} />
+                    <PasswordValidChecker display={pwLayerDisplay} password={pw} />
                 </div>
                 <div className="box">
                     <h4>비밀번호 확인</h4>

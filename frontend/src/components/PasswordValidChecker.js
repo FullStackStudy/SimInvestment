@@ -1,9 +1,8 @@
 import React from 'react';
-import './scss/PasswordLayer.scss';
-import '../Context';
+import './scss/PasswordValidChecker.scss';
 import Context from '../Context';
 
-function PasswordLayer({ display, password }) {
+function PasswordValidChecker({ display, password }) {
     const minPwLength = Context.Password.MIN_PW_LENGTH;
     const maxPwLength = Context.Password.MAX_PW_LENGTH;
 
@@ -46,7 +45,7 @@ function PasswordLayer({ display, password }) {
     };
 
     return (
-        <div className="PasswordLayer" display={display}>
+        <div className="PasswordValidChecker" display={display}>
             <ul>
                 <li status={confirmPw(0)}>
                     {minPwLength}자 이상 {maxPwLength}자 이하
@@ -58,4 +57,4 @@ function PasswordLayer({ display, password }) {
     );
 }
 
-export default PasswordLayer;
+export default PasswordValidChecker;
