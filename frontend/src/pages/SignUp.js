@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import axios from 'axios';
 import PasswordValidChecker from '../components/PasswordValidChecker';
 import Context from '../Context';
+import FormItemTitle from '../components/FormItemTitle';
 
 function SignUp() {
     const [id, setId] = useState();
@@ -40,11 +41,11 @@ function SignUp() {
 
             <form>
                 <div className="box">
-                    <h4>아이디</h4>
+                    <FormItemTitle required>아이디</FormItemTitle>
                     <Input type="text" wide value={id} onChange={onChangeId} />
                 </div>
                 <div className="box">
-                    <h4>비밀번호</h4>
+                    <FormItemTitle required>비밀번호</FormItemTitle>
                     <Input
                         type="password"
                         wide
@@ -57,7 +58,7 @@ function SignUp() {
                     <PasswordValidChecker display={pwLayerDisplay} password={pw} />
                 </div>
                 <div className="box">
-                    <h4>비밀번호 확인</h4>
+                    <FormItemTitle required>비밀번호 확인</FormItemTitle>
                     <Input
                         type="password"
                         wide
@@ -67,7 +68,7 @@ function SignUp() {
                     />
                 </div>
                 <div className="box">
-                    <h4>이름</h4>
+                    <FormItemTitle required>이름</FormItemTitle>
                     <Input type="text" wide value={name} onChange={onChangeName} />
                 </div>
                 <div className="box">
