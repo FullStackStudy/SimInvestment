@@ -1,7 +1,7 @@
 import React from 'react';
 import './scss/Button.scss';
 
-function Button({ children, onClick, color, size }) {
+function Button({ children, onClick, color, size, type, wide }) {
     // 여려 props를 클래스로 만들어주는 함수
     const getClassName = (...props) => {
         let className = 'Button';
@@ -12,7 +12,7 @@ function Button({ children, onClick, color, size }) {
     };
 
     return (
-        <button className={getClassName(color, size)} onClick={onClick}>
+        <button className={getClassName(color, size, wide ? 'wide' : '')} onClick={onClick} type={type}>
             {children}
         </button>
     );
