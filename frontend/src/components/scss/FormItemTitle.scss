@@ -1,6 +1,13 @@
 @import "Color";
 
 .FormItemTitle {
+  display: inline-block;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+  margin-bottom: 10px;
+
   span {
     color: $red;
   }
