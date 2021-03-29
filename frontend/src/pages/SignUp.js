@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './scss/SignUp.scss';
+import Context from '../Context';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import axios from 'axios';
 import PasswordValidChecker from '../components/PasswordValidChecker';
-import Context from '../Context';
 import FormItemTitle from '../components/FormItemTitle';
+import PasswordChecker from '../components/PasswordChecker';
 
 function SignUp() {
     const [id, setId] = useState();
@@ -15,7 +16,7 @@ function SignUp() {
     const [tel, setTel] = useState();
     const [email, setEmail] = useState();
 
-    const [pwLayerDisplay, setPwLayerDisplay] = useState();
+    const [pwValidCheckerDisplay, setPwValidCheckerDisplay] = useState();
 
     const onChangeId = (e) => setId(e.target.value);
     const onChangePw = (e) => setPw(e.target.value);
@@ -27,7 +28,25 @@ function SignUp() {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('/sign-up', { id, pw, name, tel, email });
+        if (pw !== pwConfirm) {
+            alert('비밀번호를 확인하세요.');
+            return;
+        }
+
+        axios
+            .post('/sign-up', {
+                id,
+                pw,
+                name,
+                tel,
+                email,
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log('error', error);
+            });
     };
 
     return (
@@ -42,7 +61,7 @@ function SignUp() {
             <form>
                 <div className="box">
                     <FormItemTitle required>아이디</FormItemTitle>
-                    <Input type="text" wide value={id} onChange={onChangeId} />
+                    <Input type="text" wide value={id} onChange={onChangeId} required />
                 </div>
                 <div className="box">
                     <FormItemTitle required>비밀번호</FormItemTitle>
@@ -51,39 +70,35 @@ function SignUp() {
                         wide
                         value={pw}
                         onChange={onChangePw}
-                        onSelect={() => setPwLayerDisplay('true')}
-                        onBlur={() => setPwLayerDisplay('false')}
+                        onSelect={() => setPwValidCheckerDisplay('true')}
+                        onBlur={() => setPwValidCheckerDisplay('false')}
                         maxLength={Context.Password.MAX_PW_LENGTH}
+                        required
                     />
-                    <PasswordValidChecker display={pwLayerDisplay} password={pw} />
+                    <PasswordValidChecker display={pwValidCheckerDisplay} pw={pw} />
                 </div>
                 <div className="box">
                     <FormItemTitle required>비밀번호 확인</FormItemTitle>
+                    <PasswordChecker pw={pw} pwConfirm={pwConfirm} />
                     <Input
                         type="password"
                         wide
                         value={pwConfirm}
                         onChange={onChangePwConfirm}
                         maxLength={Context.Password.MAX_PW_LENGTH}
+                        required
                     />
                 </div>
                 <div className="box">
                     <FormItemTitle required>이름</FormItemTitle>
-                    <Input type="text" wide value={name} onChange={onChangeName} />
+                    <Input type="text" wide value={name} onChange={onChangeName} required />
                 </div>
                 <div className="box">
-                    <h4>전화번호</h4>
+                    <FormItemTitle>전화번호</FormItemTitle>
                     <Input type="tel" placeholder="-없이 번호만 입력" wide value={tel} onChange={onChangeTel} />
-                    {/*<div className="tel">*/}
-                    {/*    <Input type="tel" name="phone" maxLength="3" />*/}
-                    {/*    <p>-</p>*/}
-                    {/*    <Input type="tel" name="phone" maxLength="4" />*/}
-                    {/*    <p>-</p>*/}
-                    {/*    <Input type="tel" name="phone" maxLength="4" />*/}
-                    {/*</div>*/}
                 </div>
                 <div className="box">
-                    <h4>이메일</h4>
+                    <FormItemTitle>이메일</FormItemTitle>
                     <Input type="email" wide value={email} onChange={onChangeEmail} />
                 </div>
 
