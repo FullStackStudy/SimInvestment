@@ -24,10 +24,21 @@ function SignUp() {
     const onChangeTel = (e) => setTel(e.target.value);
     const onChangeEmail = (e) => setEmail(e.target.value);
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        axios.post('/sign-up', { id, pw, name, tel, email });
+    const onSubmit = () => {
+        axios
+            .post('/sign-up', {
+                id,
+                pw,
+                name,
+                tel,
+                email,
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log('error', error);
+            });
     };
 
     return (
@@ -42,7 +53,7 @@ function SignUp() {
             <form>
                 <div className="box">
                     <FormItemTitle required>아이디</FormItemTitle>
-                    <Input type="text" wide value={id} onChange={onChangeId} />
+                    <Input type="text" wide value={id} onChange={onChangeId} required />
                 </div>
                 <div className="box">
                     <FormItemTitle required>비밀번호</FormItemTitle>
@@ -54,6 +65,7 @@ function SignUp() {
                         onSelect={() => setPwLayerDisplay('true')}
                         onBlur={() => setPwLayerDisplay('false')}
                         maxLength={Context.Password.MAX_PW_LENGTH}
+                        required
                     />
                     <PasswordValidChecker display={pwLayerDisplay} password={pw} />
                 </div>
@@ -65,11 +77,12 @@ function SignUp() {
                         value={pwConfirm}
                         onChange={onChangePwConfirm}
                         maxLength={Context.Password.MAX_PW_LENGTH}
+                        required
                     />
                 </div>
                 <div className="box">
                     <FormItemTitle required>이름</FormItemTitle>
-                    <Input type="text" wide value={name} onChange={onChangeName} />
+                    <Input type="text" wide value={name} onChange={onChangeName} required />
                 </div>
                 <div className="box">
                     <h4>전화번호</h4>
