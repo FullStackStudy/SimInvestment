@@ -4,7 +4,7 @@ import './scss/SignUp.scss';
 import Context from '../Context';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import PasswordValidChecker from '../components/PasswordValidChecker';
+import PasswordValidChecker, { confirmPw } from '../components/PasswordValidChecker';
 import FormItemTitle from '../components/FormItemTitle';
 import PasswordChecker from '../components/PasswordChecker';
 
@@ -26,11 +26,18 @@ function SignUp() {
     const onChangeEmail = (e) => setEmail(e.target.value);
 
     const onSubmit = (e) => {
-        e.preventDefault();
-
         if (pw !== pwConfirm) {
             alert('비밀번호를 확인하세요.');
+            e.preventDefault();
             return;
+        }
+
+        for (let i = 0; i < 3; i++) {
+            if (confirmPw(i, pw) === 'fail') {
+                alert('올바른 비밀번호를 입력하세요.');
+                e.preventDefault();
+                return;
+            }
         }
 
         axios
