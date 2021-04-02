@@ -6,9 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Slf4j
@@ -17,43 +15,41 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/join")
-    public String joinPage(Model model)
+    @PostMapping("/sign-up")
+    public @ResponseBody Member join(@RequestBody SignUpForm signUpForm)
     {
-        model.addAttribute("member", new Member());
-        return "join";
-    }
-
-    @PostMapping("/join")
-    public String join(@ModelAttribute Member member)
-    {
+        Member member = new Member();
         try {
+            member.setName(signUpForm.getName());
+            member.setId(signUpForm.getId());
+            member.setPassword(signUpForm.getPw());
+            member.setEmail(signUpForm.getEmail());
+            member.setTel(signUpForm.getTel());
+            member.setMoney(1000000);
             memberService.join(member);
         }
         catch (IllegalStateException e)
         {
             log.error("중복된 아이디 입력됨 !!");
-            return "join";
+            return null;
         }
-        return "redirect:/";
-    }
-
-    @GetMapping("/login")
-    public String login(Model model){
-        model.addAttribute("member", new Member());
-        return "login";
+        return member;
     }
 
     @PostMapping("/login")
-    public String result(@ModelAttribute Member member, Model model){
+    public Member result(@RequestBody LoginForm loginForm){
+        Member member = new Member();
+        member.setId(loginForm.getId());
+        member.setPassword(loginForm.getPassword());
+
         Member loginMember = memberService.login(member);
         if(loginMember != null) {
-            model.addAttribute(member);
-            return "result";
+            return loginMember;
         }
         else
         {
-            return "login";
+            // fail
+            return null;
         }
     }
 
