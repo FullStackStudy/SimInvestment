@@ -1,9 +1,10 @@
-const MIN_PW_LENGTH = 8;
-const MAX_PW_LENGTH = 20;
-
 export default {
     Password: {
-        MIN_PW_LENGTH: 8,
-        MAX_PW_LENGTH: 20,
+        MIN_LENGTH: 8,
+        MAX_LENGTH: 20,
+    },
+
+    Modal: {
+        display: false,
     },
 };
