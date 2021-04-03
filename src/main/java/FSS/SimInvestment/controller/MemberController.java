@@ -20,7 +20,7 @@ public class MemberController {
         try {
             member.setName(signUpForm.getName());
             member.setId(signUpForm.getId());
-            member.setPassword(signUpForm.getPw());
+            member.setPassword(signUpForm.getPassword());
             member.setEmail(signUpForm.getEmail());
             member.setTel(signUpForm.getTel());
             member.setMoney(1000000);
