@@ -4,7 +4,7 @@ import './scss/SignUp.scss';
 import Context from '../Context';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import PasswordValidChecker, { confirmPw } from '../components/PasswordValidChecker';
+import PasswordValidChecker, { confirmPassword } from '../components/PasswordValidChecker';
 import FormItemTitle from '../components/FormItemTitle';
 import PasswordChecker from '../components/PasswordChecker';
 import SignUpStore from '../stores/SignUpStore';
@@ -28,7 +28,7 @@ const SignUp = observer(() => {
         }
 
         for (let i = 0; i < 3; i++) {
-            if (confirmPw(i, password) === 'fail') {
+            if (confirmPassword(i, password) === 'fail') {
                 alert('올바른 비밀번호를 입력하세요.');
                 e.preventDefault();
                 return;
@@ -74,10 +74,10 @@ const SignUp = observer(() => {
                         onChange={(e) => changeState('password', e.target.value)}
                         onSelect={() => changeState('passwordValidCheckerDisplay', 'true')}
                         onBlur={() => changeState('passwordValidCheckerDisplay', 'false')}
-                        maxLength={Context.Password.MAX_PW_LENGTH}
+                        maxLength={Context.Password.MAX_LENGTH}
                         required
                     />
-                    <PasswordValidChecker display={passwordValidCheckerDisplay} pw={password} />
+                    <PasswordValidChecker display={passwordValidCheckerDisplay} password={password} />
                 </div>
                 <div className="box">
                     <FormItemTitle required>비밀번호 확인</FormItemTitle>
@@ -87,7 +87,7 @@ const SignUp = observer(() => {
                         wide
                         value={passwordConfirm}
                         onChange={(e) => changeState('passwordConfirm', e.target.value)}
-                        maxLength={Context.Password.MAX_PW_LENGTH}
+                        maxLength={Context.Password.MAX_LENGTH}
                         required
                     />
                 </div>
