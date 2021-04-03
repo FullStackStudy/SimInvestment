@@ -20,6 +20,10 @@ public class Member {
 
     private String name;
 
+    private String tel;
+
+    private String email;
+
     private int money;
 
     @OneToMany(mappedBy = "member")

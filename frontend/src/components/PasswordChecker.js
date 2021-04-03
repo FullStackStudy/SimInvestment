@@ -1,9 +1,9 @@
 import React from 'react';
 import './scss/PasswordChecker.scss';
 
-function PasswordChecker({ pw, pwConfirm }) {
-    const isCorrect = pw === pwConfirm ? 'true' : '';
-    const display = pw && pwConfirm ? 'true' : 'false';
+function PasswordChecker({ password, passwordConfirm }) {
+    const isCorrect = password === passwordConfirm ? 'true' : '';
+    const display = password && passwordConfirm ? 'true' : 'false';
 
     return (
         <span className="PasswordChecker" correct={isCorrect} display={display}>
