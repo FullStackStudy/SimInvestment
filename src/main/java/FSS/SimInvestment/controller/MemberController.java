@@ -4,11 +4,9 @@ import FSS.SimInvestment.domain.Member;
 import FSS.SimInvestment.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @Slf4j
 @RequiredArgsConstructor
 public class MemberController {
@@ -16,7 +14,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/sign-up")
-    public @ResponseBody Member join(@RequestBody SignUpForm signUpForm)
+    public Member join(@RequestBody SignUpForm signUpForm)
     {
         Member member = new Member();
         try {
