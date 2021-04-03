@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import './scss/SignUp.scss';
 import Context from '../Context';
@@ -7,33 +7,28 @@ import Button from '../components/Button';
 import PasswordValidChecker, { confirmPw } from '../components/PasswordValidChecker';
 import FormItemTitle from '../components/FormItemTitle';
 import PasswordChecker from '../components/PasswordChecker';
+import SignUpStore from '../stores/SignUpStore';
+import { observer } from 'mobx-react';
 
-function SignUp() {
-    const [id, setId] = useState();
-    const [pw, setPw] = useState();
-    const [pwConfirm, setPwConfirm] = useState();
-    const [name, setName] = useState();
-    const [tel, setTel] = useState();
-    const [email, setEmail] = useState();
+const signUpStore = new SignUpStore();
 
-    const [pwValidCheckerDisplay, setPwValidCheckerDisplay] = useState();
+const SignUp = observer(() => {
+    const { id, password, passwordConfirm, name, tel, email } = signUpStore.states;
+    const { passwordValidCheckerDisplay } = signUpStore.states;
 
-    const onChangeId = (e) => setId(e.target.value);
-    const onChangePw = (e) => setPw(e.target.value);
-    const onChangePwConfirm = (e) => setPwConfirm(e.target.value);
-    const onChangeName = (e) => setName(e.target.value);
-    const onChangeTel = (e) => setTel(e.target.value);
-    const onChangeEmail = (e) => setEmail(e.target.value);
+    const changeState = (key, value) => {
+        signUpStore.setState(key, value);
+    };
 
     const onSubmit = (e) => {
-        if (pw !== pwConfirm) {
+        if (password !== passwordConfirm) {
             alert('비밀번호를 확인하세요.');
             e.preventDefault();
             return;
         }
 
         for (let i = 0; i < 3; i++) {
-            if (confirmPw(i, pw) === 'fail') {
+            if (confirmPw(i, password) === 'fail') {
                 alert('올바른 비밀번호를 입력하세요.');
                 e.preventDefault();
                 return;
@@ -43,7 +38,7 @@ function SignUp() {
         axios
             .post('/sign-up', {
                 id,
-                pw,
+                password,
                 name,
                 tel,
                 email,
@@ -68,45 +63,57 @@ function SignUp() {
             <form>
                 <div className="box">
                     <FormItemTitle required>아이디</FormItemTitle>
-                    <Input type="text" wide value={id} onChange={onChangeId} required />
+                    <Input type="text" wide value={id} onChange={(e) => changeState('id', e.target.value)} required />
                 </div>
                 <div className="box">
                     <FormItemTitle required>비밀번호</FormItemTitle>
                     <Input
                         type="password"
                         wide
-                        value={pw}
-                        onChange={onChangePw}
-                        onSelect={() => setPwValidCheckerDisplay('true')}
-                        onBlur={() => setPwValidCheckerDisplay('false')}
+                        value={password}
+                        onChange={(e) => changeState('password', e.target.value)}
+                        onSelect={() => changeState('passwordValidCheckerDisplay', 'true')}
+                        onBlur={() => changeState('passwordValidCheckerDisplay', 'false')}
                         maxLength={Context.Password.MAX_PW_LENGTH}
                         required
                     />
-                    <PasswordValidChecker display={pwValidCheckerDisplay} pw={pw} />
+                    <PasswordValidChecker display={passwordValidCheckerDisplay} pw={password} />
                 </div>
                 <div className="box">
                     <FormItemTitle required>비밀번호 확인</FormItemTitle>
-                    <PasswordChecker pw={pw} pwConfirm={pwConfirm} />
+                    <PasswordChecker password={password} passwordConfirm={passwordConfirm} />
                     <Input
                         type="password"
                         wide
-                        value={pwConfirm}
-                        onChange={onChangePwConfirm}
+                        value={passwordConfirm}
+                        onChange={(e) => changeState('passwordConfirm', e.target.value)}
                         maxLength={Context.Password.MAX_PW_LENGTH}
                         required
                     />
                 </div>
                 <div className="box">
                     <FormItemTitle required>이름</FormItemTitle>
-                    <Input type="text" wide value={name} onChange={onChangeName} required />
+                    <Input
+                        type="text"
+                        wide
+                        value={name}
+                        onChange={(e) => changeState('name', e.target.value)}
+                        required
+                    />
                 </div>
                 <div className="box">
                     <FormItemTitle>전화번호</FormItemTitle>
-                    <Input type="tel" placeholder="-없이 번호만 입력" wide value={tel} onChange={onChangeTel} />
+                    <Input
+                        type="tel"
+                        placeholder="-없이 번호만 입력"
+                        wide
+                        value={tel}
+                        onChange={(e) => changeState('tel', e.target.value)}
+                    />
                 </div>
                 <div className="box">
                     <FormItemTitle>이메일</FormItemTitle>
-                    <Input type="email" wide value={email} onChange={onChangeEmail} />
+                    <Input type="email" wide value={email} onChange={(e) => changeState('email', e.target.value)} />
                 </div>
 
                 <Button type="submit" size="large" color="blue" wide onClick={onSubmit}>
@@ -115,6 +122,6 @@ function SignUp() {
             </form>
         </div>
     );
-}
+});
 
 export default SignUp;
