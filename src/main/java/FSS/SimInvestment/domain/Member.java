@@ -29,4 +29,22 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Buy> buys;
 
+    public void removeMoney(int price)
+    {
+        int restMoney = this.money - price;
+        if(restMoney < 0)
+        {
+            //exception;
+        }
+        else
+        {
+            this.money = restMoney;
+        }
+    }
+
+    public void addMoney(int price)
+    {
+        this.money += price;
+    }
+
 }
