@@ -34,7 +34,7 @@ public class Member {
         int restMoney = this.money - price;
         if(restMoney < 0)
         {
-            //exception;
+            throw new IllegalStateException("구매 수량이 보유 금액을 넘었습니다.");
         }
         else
         {
