@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Getter @Setter
 public class Buy {
 
+    protected Buy(){}
+
     @Id @GeneratedValue
     private Long key;
 
@@ -22,8 +24,41 @@ public class Buy {
 
     private int count;
 
-    private int totalPrice;
+    private int totalPurchase; // 구매하는데 사용한 금액, 투자 금액
 
-    private int startPrice; // 매입 시 초기 1주당 가격
+    // 처음 구매할 시
+    public static Buy createBuy(Member member, Item item, int addCount)
+    {
+        Buy buy = new Buy();
+        buy.setMember(member);
+        buy.setItem(item);
+        buy.setCount(addCount);
+        buy.setTotalPurchase(addCount * item.getPrice());
 
+        return buy;
+    }
+
+    public void addCount(int count)
+    {
+        this.setCount(this.count + count);
+        this.setTotalPurchase(this.totalPurchase + item.getPrice() * count);
+    }
+
+    public void subCount(int count)
+    {
+        int restCount = this.count - count;
+        if(restCount < 0)
+        {
+            //exception;
+        }
+        else
+        {
+            this.count = restCount;
+        }
+    }
+
+    public int getNowPrice()
+    {
+        return item.getPrice() * count;
+    }
 }
