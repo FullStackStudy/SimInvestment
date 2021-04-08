@@ -88,8 +88,8 @@ public class MemberServiceTest {
 
 
         // Then
-        assertEquals(null, passFail);
-        assertEquals(null, idFail);
+        assertNull(passFail);
+        assertNull(idFail);
         assertEquals(member1, loginSuc);
     }
 
