@@ -51,23 +51,16 @@ public class BuyService {
     }
 
     @Transactional
-    public void sell(Long memberKey, Long itemKey, int count)
+    public void sell(Long buyKey, int count)
     {
-        Optional<Member> member = mr.findByKey(memberKey);
-        Optional<Item> item = ir.findByKey(itemKey);
-        Buy buy;
+        Optional<Buy> buyHistory = br.findOne(buyKey);
 
         // 추후에 수정하자 **
-        if(!member.isPresent() || !item.isPresent())
+        if(!buyHistory.isPresent())
         {
-            return;
+            throw new IllegalStateException("DB에 해당 Key값에 해당하는 Buy 객체가 없습니다 Key:" + buyKey.toString());
         }
 
-        List<Buy> buyHistory = br.findBuyHistory(member.get().getKey(), item.get().getKey());
-        if(!buyHistory.isEmpty())
-        {
-            buy = buyHistory.get(0);
-            buy.subCount(count);
-        }
+        buyHistory.get().subCount(count);
     }
 }

@@ -29,6 +29,8 @@ public class Buy {
     // 처음 구매할 시
     public static Buy createBuy(Member member, Item item, int addCount)
     {
+        member.removeMoney(addCount * item.getPrice());
+
         Buy buy = new Buy();
         buy.setMember(member);
         buy.setItem(item);
@@ -40,6 +42,8 @@ public class Buy {
 
     public void addCount(int count)
     {
+        member.removeMoney(count * item.getPrice());
+
         this.setCount(this.count + count);
         this.setTotalPurchase(this.totalPurchase + item.getPrice() * count);
     }
@@ -49,10 +53,11 @@ public class Buy {
         int restCount = this.count - count;
         if(restCount < 0)
         {
-            //exception;
+            throw new IllegalStateException("판매 수량이 보유 수량보다 많습니다.");
         }
         else
         {
+            member.addMoney(item.getPrice() * count);
             this.count = restCount;
         }
     }

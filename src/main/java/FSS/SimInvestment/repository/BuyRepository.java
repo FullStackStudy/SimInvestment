@@ -19,6 +19,12 @@ public class BuyRepository {
         em.persist(buy);
     }
 
+    public Optional<Buy> findOne(Long buyKey)
+    {
+        Buy buy = em.find(Buy.class, buyKey);
+        return Optional.ofNullable(buy);
+    }
+
     public List<Buy> findBuyHistory(Long memberKey, Long itemKey)
     {
         return em.createQuery("select b from Buy b join b.member m join b.item i where m.key = :memberKey and i.key = :itemKey", Buy.class)
