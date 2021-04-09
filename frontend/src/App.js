@@ -12,6 +12,7 @@ function App() {
             {/*</Switch>*/}
             {/*<AlertModal />*/}
             {/*<Home />*/}
+            {/**/}
             <Route exact path="/" component={Home} />
             <Route path="/sign-up" component={SignUp} />
             <AlertModal />
