@@ -1,7 +1,6 @@
 import { Route, Link, Switch } from 'react-router-dom';
 import Button from '../components/Button';
 import Input from '../components/Input';
-import AlertModal from '../components/AlertModal';
 import './scss/Home.scss';
 
 function Home() {

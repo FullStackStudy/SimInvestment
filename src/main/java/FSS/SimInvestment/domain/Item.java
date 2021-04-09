@@ -19,4 +19,9 @@ public class Item {
     private String name; // 중복 불가
 
     private int price; // 1주당 가격
+
+    public void changePrice(int price)
+    {
+        this.price = price;
+    }
 }
