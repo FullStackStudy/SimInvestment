@@ -12,7 +12,7 @@ public class SignUpForm {
     private String id;
 
     @NotEmpty(message = "비밀번호는 필수입니다")
-    private String pw;
+    private String password;
 
     @NotEmpty(message = "이름은 필수입니다")
     private String name;
