@@ -1,6 +1,6 @@
 import { Route, Link, Switch } from 'react-router-dom';
 import SignUp from './pages/SignUp';
-import AlertModal from './components/AlertModal';
+import Alert from './components/Alert';
 import Home from './pages/Home';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
             {/**/}
             <Route exact path="/" component={Home} />
             <Route path="/sign-up" component={SignUp} />
-            <AlertModal />
+            <Alert />
         </div>
     );
 }
