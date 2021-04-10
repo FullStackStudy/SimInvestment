@@ -1,45 +1,68 @@
 @import "./src/components/scss/Color";
 
-#wrap{
-  position: relative;
-  min-height: 100%;
+.Home {
+  position: absolute;
+  padding-top: 10%;
+  margin-left: 35%;
+  width: 30%;
+  height: 100%;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8%;
+  }
+
+  .container {
+    .login_form {
+      * {
+        margin-bottom: 4%;
+      }
+    }
+  }
 }
 
-#header{
-  height: 44px;
-  margin: 0 auto;
-  text-align: center;
-  width: 768px;
-  margin: 0 auto;
-  padding: 106px 0 53px;
-}
-
-#container{
-  width: 768px;
-  margin: 0 auto;
-  min-height: 185px;
-}
-
-#login_form{
-  margin-bottom: 20px;
-}
-
-.Input.wide{
-  width: 460px;
-  margin: 0 auto 20px auto;
-}
-
-
-.Button.wide{
-  display: block;
-  width: 460px;
-  height: 50px;
-  margin: 0 auto;
-}
-
-#join{
-  width: 460px;
-  text-align: center;
-  margin: 0 auto;
-}
-
+//#wrap{
+//  position: relative;
+//  min-height: 100%;
+//}
+//
+//#header{
+//  height: 44px;
+//  margin: 0 auto;
+//  text-align: center;
+//  width: 768px;
+//  margin: 0 auto;
+//  padding: 106px 0 53px;
+//}
+//
+//#container{
+//  width: 768px;
+//  margin: 0 auto;
+//  min-height: 185px;
+//}
+//
+//#login_form{
+//  margin-bottom: 20px;
+//}
+//
+//.Input.wide{
+//  width: 460px;
+//  margin: 0 auto 20px auto;
+//}
+//
+//
+//.Button.wide{
+//  display: block;
+//  width: 460px;
+//  height: 50px;
+//  margin: 0 auto;
+//}
+//
+//#join{
+//  width: 460px;
+//  text-align: center;
+//  margin: 0 auto;
+//}
+//
