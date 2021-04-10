@@ -21,17 +21,17 @@ const SignUp = observer(() => {
         signUpStore.setState(key, value);
     };
 
-    const onSubmit = (e) => {
+    const submit = (e) => {
         if (password !== passwordConfirm) {
-            openAlert('비밀번호를 확인하세요.');
             e.preventDefault();
+            openAlert('비밀번호를 확인하세요.');
             return;
         }
 
         for (let i = 0; i < 3; i++) {
             if (confirmPassword(i, password) === 'fail') {
-                openAlert('올바른 비밀번호를 입력하세요.');
                 e.preventDefault();
+                openAlert('올바른 비밀번호를 입력하세요.');
                 return;
             }
         }
@@ -46,9 +46,11 @@ const SignUp = observer(() => {
             })
             .then((response) => {
                 console.log(response);
+                // TODO: 회원가입 성공
             })
             .catch((error) => {
                 console.log('error', error);
+                // TODO: 회원가입 실패
             });
     };
 
@@ -117,7 +119,7 @@ const SignUp = observer(() => {
                     <Input type="email" wide value={email} onChange={(e) => changeState('email', e.target.value)} />
                 </div>
 
-                <Button type="submit" size="large" color="blue" wide onClick={onSubmit}>
+                <Button type="submit" size="large" color="blue" wide onClick={submit}>
                     회원가입
                 </Button>
             </form>
