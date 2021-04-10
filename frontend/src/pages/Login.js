@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import Input from '../components/Input';
 import './scss/Home.scss';
 
-function Home() {
+function Login() {
     return (
         <div className="Home">
             <div className="header">
@@ -27,4 +27,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Login;
