@@ -2,12 +2,13 @@ import { Route, Link, Switch } from 'react-router-dom';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import './scss/Login.scss';
+import imgLogo from '../images/logo.png';
 
 function Login() {
     return (
         <div className="login">
             <div className="header">
-                <img src="#" alt="logo" />
+                <img src={imgLogo} alt="logo" width="380" />
             </div>
             <div className="container">
                 <form>

@@ -10,6 +10,7 @@ import PasswordChecker from '../components/PasswordChecker';
 import SignUpStore from '../stores/SignUpStore';
 import { observer } from 'mobx-react';
 import { openAlert } from '../components/Alert';
+import imgLogo from '../images/logo.png';
 
 const signUpStore = new SignUpStore();
 
@@ -61,7 +62,7 @@ const SignUp = observer(() => {
     return (
         <div className="SignUp">
             <div className="title">
-                <img src="#" alt="logo" />
+                <img src={imgLogo} alt="logo" width="150" />
                 <span>
                     <h1>회원가입</h1>
                 </span>
