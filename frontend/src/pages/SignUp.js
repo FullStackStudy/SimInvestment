@@ -9,7 +9,7 @@ import FormItemTitle from '../components/FormItemTitle';
 import PasswordChecker from '../components/PasswordChecker';
 import SignUpStore from '../stores/SignUpStore';
 import { observer } from 'mobx-react';
-import { openAlert } from '../components/AlertModal';
+import { openAlert } from '../components/Alert';
 
 const signUpStore = new SignUpStore();
 
@@ -24,14 +24,18 @@ const SignUp = observer(() => {
     const submit = (e) => {
         if (password !== passwordConfirm) {
             e.preventDefault();
-            openAlert('비밀번호를 확인하세요.');
+            openAlert({
+                message: '비밀번호를 확인하세요.',
+            });
             return;
         }
 
         for (let i = 0; i < 3; i++) {
             if (confirmPassword(i, password) === 'fail') {
                 e.preventDefault();
-                openAlert('올바른 비밀번호를 입력하세요.');
+                openAlert({
+                    message: '올바른 비밀번호를 입력하세요.',
+                });
                 return;
             }
         }
