@@ -1,7 +1,7 @@
 import { Route, Link, Switch } from 'react-router-dom';
 import Button from '../components/Button';
 import Input from '../components/Input';
-import './scss/Home.scss';
+import './scss/Login.scss';
 
 function Login() {
     return (
