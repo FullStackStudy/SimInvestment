@@ -5,7 +5,7 @@ import './scss/Login.scss';
 
 function Login() {
     return (
-        <div className="Home">
+        <div className="login">
             <div className="header">
                 <img src="#" alt="logo" />
             </div>
