@@ -1,25 +1,39 @@
 @import "/src/components/scss/Color";
 
 .Header {
+  position: sticky;
   display: flex;
-  width: 100%;
-  height: 70px;
-  background: $blue;
+  overflow: hidden;
+  height: 50px;
+  background: #ffffff;
+  border-bottom: 1px solid #b1b7c2;
   align-items: center;
   justify-content: space-between;
-  padding-left: 30px;
+  padding-left: 15px;
+  padding-right: 30px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  //box-shadow: 0 1px 5px;
 
   .user-info {
     display: flex;
     align-items: center;
-    margin-right: 60px;
 
     p {
       font-weight: bold;
-      font-size: 14pt;
-      color: #dee2e6;
+      font-size: 12pt;
+      color: #4f5663;
       span.user-name {
-        color: #88fcd3;
+        font-size: 13pt;
+        color: #00b8ff;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
       }
     }
 
