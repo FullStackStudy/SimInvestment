@@ -1,6 +1,6 @@
 @import "Color";
 
-.AlertModal {
+.Alert {
   display: none;
   position: fixed;
   left: 0;
@@ -23,7 +23,7 @@
     color: rgb(0, 0, 0);
     margin-top: 297.995px;
 
-    .modal__button {
+    .button {
       position: absolute;
       right: 20px;
       bottom: 20px;
