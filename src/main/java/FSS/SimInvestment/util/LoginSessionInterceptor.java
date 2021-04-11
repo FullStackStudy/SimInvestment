@@ -30,7 +30,7 @@ public class LoginSessionInterceptor implements HandlerInterceptor {
             String dest = (destQuery == null) ? destUri : destUri+"?"+destQuery;
             request.getSession().setAttribute("dest", dest);
 
-            response.sendRedirect("/th");
+            response.sendRedirect("/");
             return false;
         }
     }

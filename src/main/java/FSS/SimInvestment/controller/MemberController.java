@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @Slf4j
 @RequiredArgsConstructor
@@ -14,7 +16,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/sign-up")
-    public Member join(@RequestBody SignUpForm signUpForm)
+    public String join(@RequestBody SignUpForm signUpForm)
     {
         Member member = new Member();
         try {
@@ -29,19 +31,20 @@ public class MemberController {
         catch (IllegalStateException e)
         {
             log.error("중복된 아이디 입력됨 !!");
-            return null;
+            return "fail";
         }
-        return member;
+        return "success";
     }
 
     @PostMapping("/login")
-    public Member result(@RequestBody LoginForm loginForm){
+    public Member result(@RequestBody LoginForm loginForm, HttpSession session){
         Member member = new Member();
         member.setId(loginForm.getId());
         member.setPassword(loginForm.getPassword());
 
         Member loginMember = memberService.login(member);
         if(loginMember != null) {
+            session.setAttribute("loginKey", loginMember.getKey());
             return loginMember;
         }
         else
