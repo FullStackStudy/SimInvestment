@@ -1,0 +1,44 @@
+@import "/src/components/scss/Color";
+
+.Header {
+  position: sticky;
+  display: flex;
+  overflow: hidden;
+  height: 50px;
+  background: #ffffff;
+  border-bottom: 1px solid #b1b7c2;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 25px;
+  padding-right: 30px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  //box-shadow: 0 1px 5px;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+
+    p {
+      font-weight: bold;
+      font-size: 12pt;
+      color: #4f5663;
+      span.user-name {
+        font-size: 13pt;
+        color: #00b8ff;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .Button {
+      margin-left: 30px;
+    }
+  }
+}

@@ -54,6 +54,9 @@
   &.green{
     @include button-color($green);
   }
+  &.sky-blue{
+    @include button-color($sky-blue);
+  }
 
   &.large{
     height: 3rem;
