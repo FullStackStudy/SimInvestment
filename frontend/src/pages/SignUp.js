@@ -62,7 +62,7 @@ const SignUp = observer(() => {
     return (
         <div className="SignUp">
             <div className="title">
-                <img src={imgLogo} alt="logo" width="150" />
+                <img src={imgLogo} alt="logo" width="80" />
                 <span>
                     <h1>회원가입</h1>
                 </span>

@@ -2,7 +2,7 @@ import React from 'react';
 import './scss/Header.scss';
 import MainStore from '../../stores/MainStore';
 import Button from '../Button';
-import imgLogo from '../../images/logo.png';
+import imgLogo from './images/logo.png';
 
 const mainStore = new MainStore();
 
@@ -11,7 +11,7 @@ function Header() {
 
     return (
         <div className="Header">
-            <img src={imgLogo} alt="logo" width="150" />
+            <img src={imgLogo} alt="logo" width="100" />
             <div className="user-info">
                 <p>
                     <span className="user-name">{name}</span>님 환영합니다.
