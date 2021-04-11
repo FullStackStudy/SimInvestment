@@ -1,6 +1,5 @@
 import { Route, Link, Switch } from 'react-router-dom';
 import SignUp from './pages/SignUp';
-import Alert from './components/Alert';
 import Login from './pages/Login';
 import Test from './pages/Test';
 
@@ -18,7 +17,6 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/test" component={Test} />
-            <Alert />
         </div>
     );
 }

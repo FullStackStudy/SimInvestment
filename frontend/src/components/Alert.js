@@ -10,6 +10,7 @@ const alertStore = new AlertStore();
 const initAlert = () => {
     alertStore.initCallback();
     alertStore.initButtonText();
+    document.body.style.overflow = 'unset';
 };
 
 /**
@@ -21,6 +22,7 @@ const initAlert = () => {
  * callback: 알림창 버튼을 클릭하면 실행되는 함수로 confirm과 cancel 두 버튼에 대한 이벤트를 각각 지정할 수 있다.
  */
 export const openAlert = (option) => {
+    document.body.style.overflow = 'hidden';
     alertStore.setState('display', true);
     alertStore.setStates(option);
 };

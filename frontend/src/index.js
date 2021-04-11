@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import Alert from './components/Alert';
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <App />
+            <Alert />
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root'),
