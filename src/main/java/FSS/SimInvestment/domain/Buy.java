@@ -1,5 +1,6 @@
 package FSS.SimInvestment.domain;
 
+import FSS.SimInvestment.exception.NotValidCountException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -53,7 +54,7 @@ public class Buy {
         int restCount = this.count - count;
         if(restCount < 0)
         {
-            throw new IllegalStateException("판매 수량이 보유 수량보다 많습니다.");
+            throw new NotValidCountException("판매 수량이 보유 수량보다 많습니다.");
         }
         else
         {
