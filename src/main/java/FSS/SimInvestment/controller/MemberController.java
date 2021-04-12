@@ -25,21 +25,14 @@ public class MemberController {
     public ResponseEntity<ResponseForm> join(@RequestBody SignUpForm signUpForm)
     {
         Member member = new Member();
-        try {
-            member.setName(signUpForm.getName());
-            member.setId(signUpForm.getId());
-            member.setPassword(signUpForm.getPassword());
-            member.setEmail(signUpForm.getEmail());
-            member.setTel(signUpForm.getTel());
-            member.setMoney(1000000);
-            memberService.join(member);
-        }
-        catch (IllegalStateException e)
-        {
-            log.error("중복된 아이디 입력됨 !!");
-            ResponseForm response = new ResponseForm(StatusEnum.BAD_REQUEST,"중복된 아이디 입력");
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-        }
+        member.setName(signUpForm.getName());
+        member.setId(signUpForm.getId());
+        member.setPassword(signUpForm.getPassword());
+        member.setEmail(signUpForm.getEmail());
+        member.setTel(signUpForm.getTel());
+        member.setMoney(1000000);
+        memberService.join(member);
+
         ResponseForm response = new ResponseForm(StatusEnum.OK, "회원가입 성공");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
