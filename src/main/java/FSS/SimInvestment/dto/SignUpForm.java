@@ -1,4 +1,4 @@
-package FSS.SimInvestment.controller;
+package FSS.SimInvestment.dto;
 
 import lombok.Getter;
 import lombok.Setter;
