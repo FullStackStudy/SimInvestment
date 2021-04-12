@@ -1,9 +1,15 @@
 package FSS.SimInvestment.controller;
 
 import FSS.SimInvestment.domain.Member;
+import FSS.SimInvestment.dto.LoginForm;
+import FSS.SimInvestment.dto.ResponseForm;
+import FSS.SimInvestment.dto.SignUpForm;
+import FSS.SimInvestment.dto.StatusEnum;
 import FSS.SimInvestment.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -16,7 +22,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/sign-up")
-    public String join(@RequestBody SignUpForm signUpForm)
+    public ResponseEntity<ResponseForm> join(@RequestBody SignUpForm signUpForm)
     {
         Member member = new Member();
         try {
@@ -31,9 +37,11 @@ public class MemberController {
         catch (IllegalStateException e)
         {
             log.error("중복된 아이디 입력됨 !!");
-            return "fail";
+            ResponseForm response = new ResponseForm(StatusEnum.BAD_REQUEST,"중복된 아이디 입력");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
-        return "success";
+        ResponseForm response = new ResponseForm(StatusEnum.OK, "회원가입 성공");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/login")
