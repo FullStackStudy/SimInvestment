@@ -1,15 +1,15 @@
 import React from 'react';
-import './scss/Alert.scss';
-import Button from './Button';
+import './Alert.scss';
+import Button from '../button/Button';
 import { observer } from 'mobx-react';
-import AlertStore from '../stores/AlertStore';
+import AlertVM from './AlertVM';
 
-const alertStore = new AlertStore();
+const vm = new AlertVM();
 
 // 알림창 닫을때 초기화
 const initAlert = () => {
-    alertStore.initCallback();
-    alertStore.initButtonText();
+    vm.initCallback();
+    vm.initButtonText();
     document.body.style.overflow = 'unset';
 };
 
@@ -23,21 +23,21 @@ const initAlert = () => {
  */
 export const openAlert = (option) => {
     document.body.style.overflow = 'hidden';
-    alertStore.setState('display', true);
-    alertStore.setStates(option);
+    vm.setState('display', true);
+    vm.setStates(option);
 };
 
 const Alert = observer(() => {
-    const { display, message, isMultiButton, buttonText, callback } = alertStore.states;
+    const { display, message, isMultiButton, buttonText, callback } = vm.states;
 
     const confirm = () => {
-        alertStore.setState('display', false);
+        vm.setState('display', false);
         if (callback.confirm) callback.confirm();
         initAlert();
     };
 
     const cancel = () => {
-        alertStore.setState('display', false);
+        vm.setState('display', false);
         if (callback.cancel) callback.cancel();
         initAlert();
     };

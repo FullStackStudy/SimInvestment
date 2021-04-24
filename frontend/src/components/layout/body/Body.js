@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/Body.scss';
+import './Body.scss';
 import SideBar from './SideBar';
 
 function Body({ children }) {

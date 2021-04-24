@@ -1,9 +1,9 @@
 import React from 'react';
-import './scss/SideBar.scss';
+import './SideBar.scss';
 import LayoutMenu from './LayoutMenu';
-import imgMarket from './images/market.png';
-import imgStatus from './images/status.png';
-import imgTrend from './images/trend.png';
+import imgMarket from '../images/market.png';
+import imgStatus from '../images/status.png';
+import imgTrend from '../images/trend.png';
 
 function SideBar() {
     return (

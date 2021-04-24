@@ -1,8 +1,8 @@
 import React from 'react';
-import './scss/Header.scss';
-import MainStore from '../../stores/MainStore';
-import Button from '../Button';
-import imgLogo from './images/logo.png';
+import './Header.scss';
+import MainStore from '../../../stores/MainStore';
+import Button from '../../button/Button';
+import imgLogo from '../images/logo.png';
 
 const mainStore = new MainStore();
 

@@ -1,25 +1,25 @@
 import React from 'react';
 import axios from 'axios';
-import './scss/SignUp.scss';
-import Context from '../Context';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import PasswordValidChecker, { confirmPassword } from '../components/PasswordValidChecker';
-import FormItemTitle from '../components/FormItemTitle';
-import PasswordChecker from '../components/PasswordChecker';
-import SignUpStore from '../stores/SignUpStore';
+import './SignUp.scss';
+import Context from '../../Context';
+import Input from '../../components/input/Input';
+import Button from '../../components/button/Button';
+import PasswordValidChecker, { confirmPassword } from '../../components/form/PasswordValidChecker';
+import FormItemTitle from '../../components/form/FormItemTitle';
+import PasswordChecker from '../../components/form/PasswordChecker';
+import SignUpVM from './SignUpVM';
 import { observer } from 'mobx-react';
-import { openAlert } from '../components/Alert';
-import imgLogo from '../images/logo.png';
+import { openAlert } from '../../components/alert/Alert';
+import imgLogo from '../../images/logo.png';
 
-const signUpStore = new SignUpStore();
+const vm = new SignUpVM();
 
 const SignUp = observer(() => {
-    const { id, password, passwordConfirm, name, tel, email } = signUpStore.states;
-    const { passwordValidCheckerDisplay } = signUpStore.states;
+    const { id, password, passwordConfirm, name, tel, email } = vm.states;
+    const { passwordValidCheckerDisplay } = vm.states;
 
     const changeState = (key, value) => {
-        signUpStore.setState(key, value);
+        vm.setState(key, value);
     };
 
     const submit = (e) => {

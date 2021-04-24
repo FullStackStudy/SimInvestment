@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/Input.scss';
+import './Input.scss';
 
 // wide: true / false
 function Input({ type, placeholder, onChange, size, wide, name, onSelect, onBlur, maxLength, required }) {

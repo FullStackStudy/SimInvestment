@@ -1,7 +1,7 @@
 import React from 'react';
-import './scss/Layout.scss';
-import Header from './Header';
-import Body from './Body';
+import './Layout.scss';
+import Header from './header/Header';
+import Body from './body/Body';
 
 function Layout({ children }) {
     return (

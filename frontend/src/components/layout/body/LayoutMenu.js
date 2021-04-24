@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/LayoutMenu.scss';
+import './LayoutMenu.scss';
 
 function LayoutMenu({ children, imgSrc }) {
     return (
