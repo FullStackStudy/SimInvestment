@@ -1,6 +1,6 @@
 import React from 'react';
-import './scss/PasswordValidChecker.scss';
-import Context from '../Context';
+import './PasswordValidChecker.scss';
+import Context from '../../Context';
 
 // 비밀번호 유효성 검사
 export const confirmPassword = (code, pw) => {

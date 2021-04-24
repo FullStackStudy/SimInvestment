@@ -1,4 +1,4 @@
-@import "Color";
+@import "src/components/Color";
 
 @mixin button-color($color){
   background: $color;

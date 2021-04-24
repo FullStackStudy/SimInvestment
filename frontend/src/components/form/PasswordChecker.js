@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/PasswordChecker.scss';
+import './PasswordChecker.scss';
 
 function PasswordChecker({ password, passwordConfirm }) {
     const isCorrect = password === passwordConfirm ? 'true' : '';

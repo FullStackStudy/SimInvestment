@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import './scss/Login.scss';
-import imgLogo from '../images/logo.png';
+import Button from '../../components/button/Button';
+import Input from '../../components/input/Input';
+import './Login.scss';
+import imgLogo from '../../images/logo.png';
 import { observer } from 'mobx-react';
-import LoginStore from '../stores/LoginStore';
-import { openAlert } from '../components/Alert';
+import LoginVM from './LoginVM';
+import { openAlert } from '../../components/alert/Alert';
 import axios from 'axios';
 
-const loginStore = new LoginStore();
+const vm = new LoginVM();
 
 const Login = observer(() => {
-    const { id, password } = loginStore.states;
+    const { id, password } = vm.states;
 
     const changeState = (key, value) => {
-        loginStore.setState(key, value);
+        vm.setState(key, value);
     };
 
     const submit = (e) => {

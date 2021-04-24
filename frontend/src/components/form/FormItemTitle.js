@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/FormItemTitle.scss';
+import './FormItemTitle.scss';
 
 function FormItemTitle({ children, required }) {
     return (

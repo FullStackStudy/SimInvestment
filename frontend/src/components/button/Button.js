@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/Button.scss';
+import './Button.scss';
 
 function Button({ children, onClick, color, size, type, wide }) {
     // 여려 props를 클래스로 만들어주는 함수

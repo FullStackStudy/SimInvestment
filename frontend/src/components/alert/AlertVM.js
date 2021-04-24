@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from 'mobx';
 
-class AlertStore {
+class AlertVM {
     constructor() {
         makeObservable(this);
     }
@@ -59,4 +59,4 @@ class AlertStore {
     }
 }
 
-export default AlertStore;
+export default AlertVM;
